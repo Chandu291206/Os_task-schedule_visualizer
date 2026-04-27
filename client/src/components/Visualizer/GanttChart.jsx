@@ -40,12 +40,12 @@ const GanttChart = ({ snapshots, currentStep }) => {
   const maxTime = Math.max(10, history[history.length - 1]?.time || 10);
 
   return (
-    <div style={{ width: '100%', overflowX: 'auto', padding: '1rem 0' }}>
+    <div style={{ width: '100%', overflowX: 'auto', padding: '1rem 0 2.5rem 0', flexShrink: 0 }}>
       <h3 style={{ marginBottom: '1rem' }}>Gantt Chart</h3>
       
       <div style={{ 
         position: 'relative', 
-        height: '60px', 
+        height: '80px', 
         backgroundColor: 'var(--color-bg-primary)', 
         borderRadius: '8px',
         border: '1px solid var(--color-border)',

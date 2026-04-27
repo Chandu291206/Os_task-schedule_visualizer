@@ -35,18 +35,18 @@ const VisualizerContainer = () => {
   };
 
   return (
-    <div style={{ display: 'flex', gap: '1.5rem', height: '100%', width: '100%', overflow: 'hidden' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', width: '100%' }}>
       
-      {/* LEFT PANE - Visualizer */}
+      {/* TOP PANE - Visualizer */}
       <div style={{ 
-        flex: 3, 
+        flex: 1, 
         backgroundColor: 'var(--color-bg-card)', 
         borderRadius: 'var(--border-radius-lg)',
         border: '1px solid var(--color-border)',
         padding: '1.5rem',
         display: 'flex',
         flexDirection: 'column',
-        overflowY: 'auto' 
+        minHeight: '400px'
       }}>
         {snapshots.length > 0 ? (
           <>
@@ -62,15 +62,13 @@ const VisualizerContainer = () => {
         )}
       </div>
 
-      {/* RIGHT PANE - Controls + Input */}
+      {/* BOTTOM PANE - Controls + Input */}
       <div style={{ 
-        flex: 1, 
         display: 'flex', 
-        flexDirection: 'column', 
         gap: '1.5rem',
-        overflow: 'hidden'
+        alignItems: 'flex-start'
       }}>
-        <div style={{ backgroundColor: 'var(--color-bg-card)', borderRadius: 'var(--border-radius-lg)', border: '1px solid var(--color-border)' }}>
+        <div style={{ flex: '0 0 320px', backgroundColor: 'var(--color-bg-card)', borderRadius: 'var(--border-radius-lg)', border: '1px solid var(--color-border)' }}>
           <PlaybackControls 
             isPlaying={isPlaying}
             play={play}
@@ -92,7 +90,6 @@ const VisualizerContainer = () => {
            borderRadius: 'var(--border-radius-lg)',
            border: '1px solid var(--color-border)',
            padding: '1.5rem',
-           overflowY: 'auto'
          }}>
            <InputPanel />
          </div>

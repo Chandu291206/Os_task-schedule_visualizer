@@ -76,7 +76,7 @@ const AlgorithmPageContent = () => {
         </header>
 
         {activeMainTab === 'visualizer' ? (
-          <div style={{ display: 'flex', flex: 1, overflow: 'hidden' }}>
+          <div style={{ display: 'flex', flex: 1, overflowY: 'auto' }}>
             <VisualizerContainer />
           </div>
         ) : (
