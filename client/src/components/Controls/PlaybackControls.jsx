@@ -11,24 +11,23 @@ const PlaybackControls = ({
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', padding: '1rem' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.25rem' }}>
-        <h4 style={{ margin: 0, fontSize: '0.95rem' }}>Playback Controls</h4>
-        <span style={{ fontSize: '0.85rem', color: 'var(--color-text-secondary)' }}>
-          Step: {totalSteps > 0 ? `${currentStep + 1}/${totalSteps}` : '0/0'}
-        </span>
-      </div>
-
+    <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', padding: '0.5rem 1.5rem' }}>
       {totalSteps === 0 ? (
         <button
           onClick={runSimulation}
-          style={{ width: '100%', padding: '0.6rem', background: 'var(--color-accent-blue)', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}
+          style={{ padding: '0.6rem 2rem', background: 'var(--color-accent-blue)', color: '#fff', border: 'none', borderRadius: '20px', cursor: 'pointer', fontWeight: 'bold' }}
         >
           Compute Visualizer
         </button>
       ) : (
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div style={{ display: 'flex', gap: '0.25rem' }}>
+        <>
+          {/* Step Indicator */}
+          <div style={{ fontSize: '0.85rem', color: 'var(--color-text-secondary)', minWidth: '80px', textAlign: 'center', fontWeight: 'bold' }}>
+            {currentStep + 1} / {totalSteps}
+          </div>
+
+          {/* Media Controls */}
+          <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
             <button onClick={reset} style={btnStyle}>|&lt;</button>
             <button onClick={stepBack} disabled={currentStep === 0} style={{...btnStyle, opacity: currentStep === 0 ? 0.5 : 1}}>&lt;</button>
             
@@ -41,46 +40,51 @@ const PlaybackControls = ({
             <button onClick={stepForward} disabled={currentStep >= totalSteps - 1} style={{...btnStyle, opacity: currentStep >= totalSteps - 1 ? 0.5 : 1}}>&gt;</button>
           </div>
 
-          <div style={{ display: 'flex', gap: '0.5rem' }}>
+          {/* Speed & Recompute */}
+          <div style={{ display: 'flex', gap: '0.8rem', alignItems: 'center', borderLeft: '1px solid var(--color-border)', paddingLeft: '1.5rem' }}>
             <button 
               onClick={cycleSpeed}
-              style={{ background: 'var(--color-bg-sidebar)', color: 'var(--color-accent-yellow)', border: '1px solid var(--color-border)', borderRadius: '4px', padding: '0 0.5rem', fontSize: '0.8rem', fontWeight: 'bold', cursor: 'pointer', height: '32px' }}
+              style={{ background: 'transparent', color: 'var(--color-accent-yellow)', border: 'none', fontSize: '0.9rem', fontWeight: 'bold', cursor: 'pointer' }}
             >
               {speedMultiplier.toFixed(1)}x
             </button>
             <button 
               onClick={runSimulation} 
-              style={{ background: 'transparent', color: 'var(--color-text-secondary)', border: '1px dashed var(--color-border)', borderRadius: '4px', cursor: 'pointer', fontSize: '0.8rem', padding: '0 0.5rem', height: '32px' }}
+              style={{ background: 'transparent', color: 'var(--color-text-primary)', border: '1px solid var(--color-border)', borderRadius: '15px', cursor: 'pointer', fontSize: '0.8rem', padding: '0.4rem 1rem', fontWeight: 'bold' }}
             >
               Recompute
             </button>
           </div>
-        </div>
+        </>
       )}
     </div>
   );
 };
 
 const btnStyle = {
-  background: 'var(--color-bg-card)',
-  color: '#fff',
-  border: '1px solid var(--color-border)',
+  background: 'transparent',
+  color: 'var(--color-text-primary)',
+  border: 'none',
   width: '32px',
   height: '32px',
-  borderRadius: '4px',
+  borderRadius: '16px',
   cursor: 'pointer',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  fontSize: '0.82rem',
-  fontWeight: '700'
+  fontSize: '0.9rem',
+  fontWeight: 'bold',
+  transition: 'background 0.2s'
 };
 
 const playBtnStyle = {
   ...btnStyle,
   background: 'var(--color-accent-blue)',
-  border: 'none',
-  width: '38px',
+  color: '#fff',
+  width: '40px',
+  height: '40px',
+  borderRadius: '20px',
+  fontSize: '1rem'
 };
 
 export default PlaybackControls;
