@@ -76,32 +76,8 @@ const AlgorithmPageContent = () => {
         </header>
 
         {activeMainTab === 'visualizer' ? (
-          <div style={{ display: 'flex', gap: '1.5rem', flex: 1, overflow: 'hidden' }}>
-            {/* Visualizer Area */}
-            <div style={{ 
-              flex: 2, 
-              backgroundColor: 'var(--color-bg-card)', 
-              borderRadius: 'var(--border-radius-lg)',
-              border: '1px solid var(--color-border)',
-              padding: '1.5rem',
-              display: 'flex',
-              flexDirection: 'column',
-              overflow: 'hidden'
-            }}>
-              <VisualizerContainer />
-            </div>
-
-            {/* Input Panel Area */}
-            <div style={{ 
-              flex: 1, 
-              backgroundColor: 'var(--color-bg-card)', 
-              borderRadius: 'var(--border-radius-lg)',
-              border: '1px solid var(--color-border)',
-              padding: '1.5rem',
-              overflowY: 'auto'
-            }}>
-              <InputPanel />
-            </div>
+          <div style={{ display: 'flex', flex: 1, overflow: 'hidden' }}>
+            <VisualizerContainer />
           </div>
         ) : (
           <div style={{ display: 'flex', gap: '1.5rem', flex: 1, overflowY: 'auto', alignItems: 'flex-start' }}>
